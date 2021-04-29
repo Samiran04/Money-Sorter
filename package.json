@@ -1,0 +1,19 @@
+{
+  "name": "moneysorter",
+  "version": "1.0.0",
+  "description": "To sort money amoung friends",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Samiran04/Money-Sorter.git"
+  },
+  "author": "Samiran Roy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Samiran04/Money-Sorter/issues"
+  },
+  "homepage": "https://github.com/Samiran04/Money-Sorter#readme"
+}
