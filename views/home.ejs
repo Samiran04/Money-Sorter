@@ -9,6 +9,6 @@
 
 <div>
     <% for(trip of locals.trips){ %>
-        <p><a href=""><%= trip.name %></a><a href="/trip/destroy/?id=<%= trip._id %>">X</a></p>
+        <p><a href="/trip/trip-open/?id=<%= trip._id %>"><%= trip.name %></a><a href="/trip/destroy/?id=<%= trip._id %>">X</a></p>
     <% } %>
 </div>

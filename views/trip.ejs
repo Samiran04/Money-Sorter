@@ -1,0 +1,19 @@
+<h1><%= locals.trip.name %></h1>
+
+<div>
+    <h2>Trip Users</h2>
+    <% if(locals.trip.users){ %>
+        <% for(user of trip.users){ %>
+            <p><%= user.name %></p>
+        <% } %>
+    <% } %>
+</div>
+
+<div>
+    <h2>Trip User Create</h2>
+    <form action="/trip/create-user" method="POST">
+        <input type="hidden" name="id" value="<%= locals.trip._id %>">
+        <input type="text" name="name" required placeholder="Name of user">
+        <input type="submit" name="Create">
+    </form>
+</div>
