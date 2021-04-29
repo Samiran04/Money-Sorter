@@ -1,6 +1,14 @@
 <h1>home</h1>
 
-<form action="/trip/create" method="POST">
-    <input type="text" name="name" required placeholder="Name">
-    <input type="submit" value="Create">
-</form>
+<div>
+    <form action="/trip/create" method="POST">
+        <input type="text" name="name" required placeholder="Name">
+        <input type="submit" value="Create">
+    </form>
+</div>
+
+<div>
+    <% for(trip of locals.trips){ %>
+        <p><a href=""><%= trip.name %></a><a href="/trip/destroy/?id=<%= trip._id %>">X</a></p>
+    <% } %>
+</div>
