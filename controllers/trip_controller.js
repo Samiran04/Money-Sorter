@@ -77,3 +77,27 @@ module.exports.createUser = async function(req, res){
         });
     }
 }
+
+module.exports.enterData = async function(req, res){
+    try{
+        let trip = await Trip.findById(req.body.id);
+
+        for(var user of trip.users)
+        {
+            if(user.name == req.body.name)
+            {
+                user.money = req.body.money;
+                break;
+            }
+        }
+
+        trip.save();
+
+        return res.redirect('back');
+    }catch(err){
+        console.log(err);
+        return res.json(500, {
+            message: 'Error in Trip Code'
+        });
+    }
+}

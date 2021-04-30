@@ -4,7 +4,16 @@
     <h2>Trip Users</h2>
     <% if(locals.trip.users){ %>
         <% for(user of trip.users){ %>
-            <p><%= user.name %></p>
+            <div>
+                <p><%= user.name %></p>
+                <p><%= user.money %></p>
+                <form action="/trip/enter-data" method="POST">
+                    <input type="hidden" name="id" value="<%= trip._id %>">
+                    <input type="hidden" name="name" value="<%= user.name %>">
+                    <input type="number" name="money" required placeholder="Money">
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
         <% } %>
     <% } %>
 </div>
