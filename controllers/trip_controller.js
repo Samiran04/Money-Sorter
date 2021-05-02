@@ -150,7 +150,7 @@ module.exports.calcuate = async function(req, res){
                 curr++;
             }
 
-            if(temp[Max].money == 0 && temp[Min].money == 0)
+            if(temp[Max].money == 0 || temp[Min].money == 0)
                 break;
             
             let name1 = temp[Max].name;
@@ -182,6 +182,35 @@ module.exports.calcuate = async function(req, res){
         return res.render('calculate', {
             re: re
         });
+
+    }catch(err){
+        console.log(err);
+        return res.json(500, {
+            message: 'Error in Trip Code'
+        });
+    }
+}
+
+module.exports.destroyUser = async function(req, res){
+    try{
+        let trip = await Trip.findById(req.query.id);
+
+        let users = trip.users, index = 0;
+
+        for(user of users)
+        {
+            if(user.name == req.query.name)
+            {
+                break;
+            }
+            index++;
+        }
+
+        trip.users.splice(index, 1);
+
+        trip.save();
+
+        return res.redirect('back');
 
     }catch(err){
         console.log(err);

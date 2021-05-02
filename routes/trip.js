@@ -9,5 +9,6 @@ router.post('/enter-data', trip_controller.enterData);
 router.get('/calculate', trip_controller.calcuate);
 router.get('/destroy', trip_controller.destroy);
 router.get('/trip-open', trip_controller.tripOpen);
+router.get('/destroy-user', trip_controller.destroyUser);
 
 module.exports = router;

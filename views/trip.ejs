@@ -6,6 +6,7 @@
         <% for(user of trip.users){ %>
             <div>
                 <p><%= user.name %></p>
+                <a href="/trip/destroy-user/?id=<%= locals.trip._id %>&name=<%= user.name %>">X</a>
                 <p><%= user.money %></p>
                 <form action="/trip/enter-data" method="POST">
                     <input type="hidden" name="id" value="<%= trip._id %>">
@@ -28,3 +29,4 @@
 </div>
 
 <p><a href="/trip/calculate/?id=<%= locals.trip._id %>">Calculate</a></p>
+<p><a href="/">Back</a></p>
