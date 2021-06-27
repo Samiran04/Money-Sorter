@@ -1,0 +1,78 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+/*Navbar*/
+
+.nav {
+  display: flex;
+  background: #6200ee;
+  padding: 10px 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav .left-nav {
+  color: #fff;
+  font-style: normal;
+  font-weight: bold;
+}
+
+nav .left-nav h1 {
+  cursor: pointer;
+}
+
+nav .right-nav {
+  display: flex;
+  color: #fff;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+nav #user-dp {
+  height: 40px;
+}
+nav .user {
+  display: flex;
+  align-items: center;
+}
+nav span {
+  margin-left: 10px;
+}
+nav .right-nav {
+  display: flex;
+  color: #fff;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 22px;
+}
+nav .nav-links ul {
+  display: flex;
+  list-style-type: none;
+}
+nav .nav-links ul li {
+  padding: 0 4px;
+}
+nav .nav-links ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+nav .nav-links ul li a:hover {
+  text-decoration: underline;
+}
+nav .nav-links ul li:hover {
+  cursor: pointer;
+}
