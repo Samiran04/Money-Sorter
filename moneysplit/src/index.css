@@ -12,6 +12,15 @@ code {
     monospace;
 }
 
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #eceffa;
+}
 /*Navbar*/
 
 .nav {
@@ -74,5 +83,93 @@ nav .nav-links ul li a:hover {
   text-decoration: underline;
 }
 nav .nav-links ul li:hover {
+  cursor: pointer;
+}
+
+/*Trip*/
+
+.trip {
+  height: 10em;
+  width: 20em;
+  padding: 30px;
+  background-color: #6200ee;
+  border-radius: 3px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
+  margin-top: 2em;
+}
+
+.trip input {
+  border-radius: 3px;
+  height: 4em;
+  width: 24em;
+  box-sizing: border-box;
+  border: 1px solid #d0d0d0;
+  background: #ffffff;
+}
+
+.trip button {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2em;
+  height: 2em;
+  width: 8em;
+  border-radius: 3px;
+  color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+/* LOGIN & SIGNUP COMPONENTS */
+.login-signup-header {
+  font-weight: 600;
+  font-size: 30px;
+  color: #ef7917;
+}
+.login-form {
+  background-color: #fff;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  margin: 50px auto;
+  border-radius: 6px;
+}
+.field {
+  width: 100%;
+}
+.field input {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  border-radius: 6px;
+  width: 100%;
+  height: 40px;
+  margin-top: 20px;
+  padding: 5px;
+  font-size: 15px;
+}
+.field input:focus {
+  outline: none;
+}
+.field button {
+  width: 100%;
+  margin-top: 20px;
+  background: #ef7917;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 20px;
+  padding: 9px;
+  border: none;
+  outline: none;
+}
+.field button:hover {
   cursor: pointer;
 }

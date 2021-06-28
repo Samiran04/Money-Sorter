@@ -1,8 +1,13 @@
 import React, { Component } from "react";
+import { Trip } from "./index";
 
 class Home extends Component {
   render() {
-    return <div></div>;
+    return (
+      <div>
+        <Trip />
+      </div>
+    );
   }
 }
 
