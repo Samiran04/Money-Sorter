@@ -3,16 +3,16 @@ const jwt = require("jsonwebtoken");
 module.exports.create = async function (req, res) {
   try {
     if (req.body.confirm_password !== req.body.password) {
-      return json(400, {
+      return res.json(400, {
         message: "Confirm Password and Password Dont match",
         success: false,
       });
     }
 
-    let user = await User.findOne({ email: req.user.email });
+    let user = await User.findOne({ email: req.body.email });
 
     if (user) {
-      return json(400, {
+      return res.json(400, {
         message: "User Already Exist",
         success: false,
       });

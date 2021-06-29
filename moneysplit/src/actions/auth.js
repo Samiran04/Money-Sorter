@@ -97,7 +97,6 @@ export function authenticateUser(email, password) {
 
 export function createUser(name, email, password, confirm_password) {
   const url = APIUrls.signup();
-  console.log("*******HERE", email);
   return (dispatch) => {
     dispatch(startSignUp());
     fetch(url, {

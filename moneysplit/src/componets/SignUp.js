@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { createUser } from "../actions/auth";
+import { createUser, removeErrorMessage } from "../actions/auth";
 import { Redirect } from "react-router-dom";
 
 class SignUp extends Component {
@@ -13,6 +13,10 @@ class SignUp extends Component {
       password: "",
       confirm_password: "",
     };
+  }
+
+  componentWillUnmount() {
+    this.props.dispatch(removeErrorMessage());
   }
 
   handleChange = (e) => {
@@ -31,7 +35,7 @@ class SignUp extends Component {
     dispatch(createUser(name, email, password, confirm_password));
   };
   render() {
-    const { inProgress, isLoggedIn } = this.props.auth;
+    const { inProgress, isLoggedIn, error } = this.props.auth;
 
     const { from } = this.props.location.state || { from: { pathname: "/" } };
 
@@ -42,6 +46,7 @@ class SignUp extends Component {
       <div>
         <form className="login-form">
           <span className="login-signup-header">Sign Up</span>
+          {error && <div className="alert error-dailog">{error}</div>}
           <div className="field">
             <input
               type="text"
