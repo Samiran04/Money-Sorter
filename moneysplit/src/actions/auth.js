@@ -7,6 +7,9 @@ import {
   USER_SIGN_IN_FAILED,
   SIGN_OUT,
   REMOVE_ERROR_MESSAGE,
+  CREATE_TRIP_SUCCESS,
+  CREATE_TRIP_FAILED,
+  FETCH_TRIP_LIST,
 } from "./actionTypes";
 import { getFormBody } from "../helpers/utils";
 import { APIUrls } from "../helpers/getUrl";
@@ -64,6 +67,27 @@ export function failedSignUp(error) {
   };
 }
 
+export function successTrip(trip) {
+  return {
+    type: CREATE_TRIP_SUCCESS,
+    trip,
+  };
+}
+
+export function failedTrip(error) {
+  return {
+    type: CREATE_TRIP_FAILED,
+    error,
+  };
+}
+
+export function successTripsListFetch(tripsList) {
+  return {
+    type: FETCH_TRIP_LIST,
+    tripsList,
+  };
+}
+
 export function authenticateUser(email, password) {
   const url = APIUrls.login();
   return (dispatch) => {
@@ -88,6 +112,7 @@ export function authenticateUser(email, password) {
               _id: user._id,
               email: user.email,
               password: user.password,
+              tripsList: user.tripsList,
             })
           );
         }
@@ -112,6 +137,47 @@ export function createUser(name, email, password, confirm_password) {
           dispatch(failedSignUp(data.message));
         } else {
           dispatch(successSignUp());
+        }
+      });
+  };
+}
+
+export function createTrip(email, name) {
+  const url = APIUrls.createNewTrip();
+
+  return (dispatch) => {
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: getFormBody({ name, email }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (!data.success) {
+          dispatch(failedTrip(data.message));
+        } else {
+          dispatch(successTrip(data.data.trip));
+        }
+      });
+  };
+}
+
+export function getTripsList(email) {
+  const url = APIUrls.apiFetchTripList(email);
+
+  return (dispatch) => {
+    fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          dispatch(successTripsListFetch(data.data.tripsList));
         }
       });
   };

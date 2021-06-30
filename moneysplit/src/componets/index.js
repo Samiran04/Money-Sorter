@@ -1,7 +1,8 @@
 import Navbar from "./Navbar";
 import Home from "./Home";
-import Trip from "./Trip";
+import CreateTrip from "./CreateTrip";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
+import Trip from "./Trip";
 
-export { Navbar, Home, Trip, SignIn, SignUp };
+export { Navbar, Home, CreateTrip, SignIn, SignUp, Trip };

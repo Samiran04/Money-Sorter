@@ -9,6 +9,7 @@ import { Navbar, Home, SignIn, SignUp } from "./index";
 import { successLogIn } from "../actions/auth";
 import jwt_decode from "jwt-decode";
 import { connect } from "react-redux";
+import { getTripsList } from "../actions/auth";
 
 class App extends React.Component {
   componentDidMount() {
@@ -17,12 +18,17 @@ class App extends React.Component {
     if (token) {
       const user = jwt_decode(token);
 
+      this.props.dispatch(getTripsList(user.email));
+
+      console.log(user);
+
       this.props.dispatch(
         successLogIn({
           name: user.name,
           _id: user._id,
           email: user.email,
           password: user.password,
+          tripsList: [],
         })
       );
     }

@@ -191,3 +191,25 @@ nav .nav-links ul li:hover {
 .field button:hover {
   cursor: pointer;
 }
+
+/*Trip*/
+
+.trip-wrapper {
+  border: 1px solid #e0e0e0;
+  box-sizing: border-box;
+  border-radius: 4px;
+  margin-top: 20px;
+  background: #fff;
+}
+.trip-header {
+  padding: 10px 10px;
+}
+.trip-content {
+  /* font-family: Open Sans; */
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  color: #424242;
+  margin-top: 15px;
+}

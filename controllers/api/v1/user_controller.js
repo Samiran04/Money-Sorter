@@ -22,6 +22,7 @@ module.exports.create = async function (req, res) {
       email: req.body.email,
       name: req.body.name,
       password: req.body.password,
+      tripsList: [],
     });
 
     return res.json(200, {
@@ -44,7 +45,7 @@ module.exports.createSession = async function (req, res) {
     let user = await User.findOne({
       email: req.body.email,
       password: req.body.password,
-    });
+    }).populate("tripsList");
 
     if (!user) {
       return res.json(400, {

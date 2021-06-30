@@ -7,6 +7,9 @@ import {
   USER_SIGN_IN_FAILED,
   SIGN_OUT,
   REMOVE_ERROR_MESSAGE,
+  CREATE_TRIP_SUCCESS,
+  CREATE_TRIP_FAILED,
+  FETCH_TRIP_LIST,
 } from "../actions/actionTypes";
 
 const inititalUserState = {
@@ -15,6 +18,7 @@ const inititalUserState = {
   error: null,
   isLoggedIn: false,
   signup: false,
+  tripsList: [],
 };
 
 export default function auth(state = inititalUserState, action) {
@@ -41,6 +45,7 @@ export default function auth(state = inititalUserState, action) {
         inProgress: false,
         signup: false,
         user: action.user,
+        tripsList: action.user.tripsList,
       };
     case USER_CREATE_FAIL:
     case USER_SIGN_IN_FAILED:
@@ -60,6 +65,23 @@ export default function auth(state = inititalUserState, action) {
       return {
         ...state,
         error: null,
+      };
+    case CREATE_TRIP_SUCCESS:
+      return {
+        ...state,
+        error: null,
+        tripsList: [action.trip, ...state.tripsList],
+      };
+    case CREATE_TRIP_FAILED:
+      return {
+        ...state,
+        error: action.error,
+      };
+    case FETCH_TRIP_LIST:
+      return {
+        ...state,
+        error: null,
+        tripsList: action.tripsList,
       };
     default:
       return {

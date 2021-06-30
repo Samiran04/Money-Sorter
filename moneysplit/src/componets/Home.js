@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { Trip } from "./index";
+import { CreateTrip } from "./index";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
+import { Trip } from "./index";
 
 class Home extends Component {
   render() {
-    const { isLoggedIn } = this.props.auth;
+    const { isLoggedIn, tripsList } = this.props.auth;
 
     const { from } = this.props.location.state || {
       from: { pathname: "/sign-in" },
@@ -16,7 +17,9 @@ class Home extends Component {
     }
     return (
       <div>
-        <Trip />
+        <CreateTrip />
+        {tripsList.length > 0 &&
+          tripsList.map((trip) => <Trip trip={trip} key={trip._id} />)}
       </div>
     );
   }

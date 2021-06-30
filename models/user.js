@@ -11,6 +11,12 @@ const userSchema = new mongoose.Schema(
     password: {
       type: String,
     },
+    tripsList: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Trip",
+      },
+    ],
   },
   { timestamps: true }
 );
