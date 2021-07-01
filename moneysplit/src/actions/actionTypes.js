@@ -17,3 +17,6 @@ export const FETCH_TRIP_LIST = "FETCH_TRIP_LIST";
 export const GET_TRIP = "GET_TRIP";
 export const GET_TRIP_FAIL = "GET_TRIP_FAIL";
 export const GET_TRIP_SUCCESS = "GET_TRIP_SUCCESS";
+
+export const ENTER_TRIP_USER = "ENTER_TRIP_USER";
+export const ENTER_TRIP_USER_FAILED = "ENTER_TRIP_USER_FAILED";

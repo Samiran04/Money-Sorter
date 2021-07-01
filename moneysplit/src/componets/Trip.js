@@ -1,8 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getTrip } from "../actions/trip";
+import { getTrip, enterTripUser } from "../actions/trip";
+import { User } from "./index";
 
 class Trip extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      name: "",
+    };
+  }
+
   componentDidMount() {
     const {
       dispatch,
@@ -13,6 +22,20 @@ class Trip extends Component {
 
     dispatch(getTrip(tripId));
   }
+
+  handleChange = (e) => {
+    this.setState({
+      name: e.target.value,
+    });
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+
+    const { name } = this.state;
+
+    this.props.dispatch(enterTripUser(name, this.props.trip.data._id));
+  };
   render() {
     const { data, inProgress } = this.props.trip;
     return (
@@ -22,8 +45,17 @@ class Trip extends Component {
           <h1>{data.name}</h1>
         </div>
         <div>
-          <input type="text" placeholder="Enter name here..."></input>
-          <button>Create</button>
+          <input
+            type="text"
+            placeholder="Enter name here..."
+            onChange={this.handleChange}
+          ></input>
+          <button onClick={this.handleSubmit}>Create</button>
+        </div>
+        <div>
+          {data.users &&
+            data.users.length > 0 &&
+            data.users.map((user) => <User user={user} />)}
         </div>
       </div>
     );
