@@ -100,3 +100,22 @@ module.exports.fetchTripsList = async function (req, res) {
     });
   }
 };
+
+module.exports.getTripData = async function (req, res) {
+  try {
+    let trip = await Trip.findById(req.query.tripId);
+
+    return res.json(200, {
+      success: true,
+      data: {
+        trip: trip,
+      },
+    });
+  } catch (err) {
+    console.log(err);
+    return res.json(500, {
+      message: "Error in Get Trip Data Code",
+      success: false,
+    });
+  }
+};

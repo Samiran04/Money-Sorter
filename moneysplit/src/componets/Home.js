@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { CreateTrip } from "./index";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { Trip } from "./index";
+import { TripList } from "./index";
 
 class Home extends Component {
   render() {
@@ -19,7 +19,7 @@ class Home extends Component {
       <div>
         <CreateTrip />
         {tripsList.length > 0 &&
-          tripsList.map((trip) => <Trip trip={trip} key={trip._id} />)}
+          tripsList.map((trip) => <TripList trip={trip} key={trip._id} />)}
       </div>
     );
   }

@@ -5,7 +5,7 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
-import { Navbar, Home, SignIn, SignUp } from "./index";
+import { Navbar, Home, SignIn, SignUp, Trip } from "./index";
 import { successLogIn } from "../actions/auth";
 import jwt_decode from "jwt-decode";
 import { connect } from "react-redux";
@@ -48,6 +48,7 @@ class App extends React.Component {
             />
             <Route path="/sign-in" component={SignIn} />
             <Route path="/sign-up" component={SignUp} />
+            <Route path="/trip/:tripId" component={Trip} />
           </Switch>
         </div>
       </Router>

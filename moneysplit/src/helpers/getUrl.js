@@ -5,6 +5,7 @@ export const APIUrls = {
   signup: () => `${APIRoot}/users/create`,
   createNewTrip: () => `${APIRoot}/trips/create`,
   createNewUser: () => `${APIRoot}/trips/create-user`,
+  getTripData: (tripId) => `${APIRoot}/trips/get-trip-data/?tripId=${tripId}`,
   apiFetchTripList: (email) =>
     `${APIRoot}/trips/fetch-trip-list/?email=${email}`,
 };

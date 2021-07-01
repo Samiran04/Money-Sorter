@@ -17,7 +17,9 @@ class Navbar extends Component {
       <div>
         <nav className="nav">
           <div className="left-nav">
-            <h1>Money Split</h1>
+            <Link to="/">
+              <h1>Money Split</h1>
+            </Link>
           </div>
           <div className="right-nav">
             <div className="nav-links">

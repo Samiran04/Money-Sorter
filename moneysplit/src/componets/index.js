@@ -3,6 +3,7 @@ import Home from "./Home";
 import CreateTrip from "./CreateTrip";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
+import TripList from "./TripList";
 import Trip from "./Trip";
 
-export { Navbar, Home, CreateTrip, SignIn, SignUp, Trip };
+export { Navbar, Home, CreateTrip, SignIn, SignUp, TripList, Trip };
