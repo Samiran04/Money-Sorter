@@ -4,6 +4,8 @@ import {
   GET_TRIP_SUCCESS,
   ENTER_TRIP_USER,
   ENTER_TRIP_USER_FAILED,
+  CHANGE_MONEY_SUCCESS,
+  CHANGE_MONEY_FAILED,
 } from "./actionTypes";
 import { APIUrls } from "../helpers/getUrl";
 import { getFormBody } from "../helpers/utils";
@@ -38,6 +40,20 @@ export function enterTrip(user) {
 export function enterTripFailed(error) {
   return {
     type: ENTER_TRIP_USER_FAILED,
+    error,
+  };
+}
+
+export function changeMoneySuccess(trip) {
+  return {
+    type: CHANGE_MONEY_SUCCESS,
+    trip,
+  };
+}
+
+export function changeMoneyFailed(error) {
+  return {
+    type: CHANGE_MONEY_FAILED,
     error,
   };
 }
@@ -81,6 +97,28 @@ export function enterTripUser(name, tripId) {
           dispatch(enterTripFailed(data.message));
         } else {
           dispatch(enterTrip({ name, money: 0 }));
+        }
+      });
+  };
+}
+
+export function changeMoney(tripId, name, money) {
+  const url = APIUrls.apiChangeMoney();
+
+  return (dispatch) => {
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: getFormBody({ tripId, name, money }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          dispatch(changeMoneySuccess(data.data.trip));
+        } else {
+          dispatch(changeMoneyFailed(data.message));
         }
       });
   };

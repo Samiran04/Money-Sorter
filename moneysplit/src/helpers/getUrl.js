@@ -9,4 +9,5 @@ export const APIUrls = {
   apiFetchTripList: (email) =>
     `${APIRoot}/trips/fetch-trip-list/?email=${email}`,
   apiCreateTripUser: () => `${APIRoot}/trips/create-user`,
+  apiChangeMoney: () => `${APIRoot}/trips/change-money`,
 };
