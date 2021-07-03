@@ -40,20 +40,21 @@ class Trip extends Component {
   render() {
     const { data, inProgress } = this.props.trip;
     return (
-      <div>
+      <div className="list-outer">
         {inProgress && <h1>Loading...</h1>}
-        <div>
+        <div className="list-title">
           <h1>{data.name}</h1>
+          <div className="create-new">
+            <input
+              type="text"
+              placeholder="Enter name here..."
+              onChange={this.handleChange}
+            ></input>
+            <button onClick={this.handleSubmit}>Create</button>
+          </div>
         </div>
-        <div>
-          <input
-            type="text"
-            placeholder="Enter name here..."
-            onChange={this.handleChange}
-          ></input>
-          <button onClick={this.handleSubmit}>Create</button>
-        </div>
-        <div>
+
+        <div className="items-list">
           {data.users &&
             data.users.length > 0 &&
             data.users.map((user) => <User user={user} />)}

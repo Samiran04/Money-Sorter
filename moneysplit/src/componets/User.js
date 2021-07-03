@@ -8,6 +8,7 @@ class User extends Component {
 
     this.state = {
       money: 0,
+      edit: false,
     };
   }
 
@@ -26,14 +27,34 @@ class User extends Component {
       changeMoney(this.props.trip.data._id, user.name, this.state.money)
     );
   };
+
+  handleEdit = (e) => {
+    e.preventDefault();
+    console.log("HERE");
+    this.setState({
+      edit: true,
+    });
+  };
   render() {
     const { user } = this.props;
+    const { edit } = this.state;
     return (
-      <div>
-        <span>{user.name}</span>
-        <span>{user.money}</span>
-        <input type="number" onChange={this.handleChange}></input>
-        <button onClick={this.handleSubmit}>Change</button>
+      <div className="to-do-item">
+        <span className="name">{user.name}</span>
+        <span className="name">
+          {!edit && user.money}
+          {edit && (
+            <input
+              type="number"
+              value={`${user.money}`}
+              onChange={this.handleChange}
+            ></input>
+          )}
+        </span>
+        <span className="actions">
+          <button onClick={this.handleEdit}>Edit</button>
+          <button onClick={this.handleSubmit}>Change</button>
+        </span>
       </div>
     );
   }
