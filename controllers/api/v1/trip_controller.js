@@ -147,3 +147,86 @@ module.exports.changeMoney = async function (req, res) {
     });
   }
 };
+
+module.exports.calcuate = async function (req, res) {
+  try {
+    let trip = await Trip.findById(req.query.id);
+
+    let total = 0,
+      n = trip.users.length,
+      temp = trip.users;
+
+    for (var user of trip.users) {
+      total += user.money;
+    }
+
+    let re = [],
+      common = total / n;
+
+    for (var user of temp) {
+      user.money = user.money - common;
+    }
+
+    while (1) {
+      let val1 = -1,
+        Max = -1,
+        curr = 0;
+
+      for (var user of temp) {
+        if (user.money > val1) {
+          val1 = user.money;
+          Max = curr;
+        }
+
+        curr++;
+      }
+
+      let val2 = 1,
+        Min = -1;
+
+      curr = 0;
+
+      for (var user of temp) {
+        if (user.money < val2) {
+          val2 = user.money;
+          Min = curr;
+        }
+
+        curr++;
+      }
+
+      if (temp[Max].money == 0 || temp[Min].money == 0) break;
+
+      let name1 = temp[Max].name;
+      let name2 = temp[Min].name;
+
+      let b = -temp[Min].money;
+      let a = temp[Max].money;
+
+      let val;
+
+      if (a > b) val = b;
+      else val = a;
+
+      temp[Min].money += val;
+      temp[Max].money -= val;
+
+      let string = name2 + " pay " + val + " rupess to " + name1;
+
+      re.push(string);
+    }
+
+    return res.json(200, {
+      success: true,
+      data: {
+        solution: re,
+      },
+    });
+  } catch (err) {
+    console.log(err);
+    return res.json(500, {
+      message: "Error in Trip Code",
+      success: false,
+    });
+  }
+};

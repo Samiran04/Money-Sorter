@@ -8,5 +8,6 @@ router.post("/create-user", trip_controller_api.createUser);
 router.post("/change-money", trip_controller_api.changeMoney);
 router.get("/fetch-trip-list", trip_controller_api.fetchTripsList);
 router.get("/get-trip-data", trip_controller_api.getTripData);
+router.get("/calculate", trip_controller_api.calcuate);
 
 module.exports = router;

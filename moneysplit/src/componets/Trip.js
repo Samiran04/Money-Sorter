@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getTrip, enterTripUser } from "../actions/trip";
 import { User } from "./index";
+import { Link } from "react-router-dom";
 
 class Trip extends Component {
   constructor() {
@@ -56,6 +57,9 @@ class Trip extends Component {
           {data.users &&
             data.users.length > 0 &&
             data.users.map((user) => <User user={user} />)}
+        </div>
+        <div>
+          <Link to={`/solution/${this.props.trip.data._id}`}>Calculate</Link>
         </div>
       </div>
     );

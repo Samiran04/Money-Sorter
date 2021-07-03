@@ -10,4 +10,5 @@ export const APIUrls = {
     `${APIRoot}/trips/fetch-trip-list/?email=${email}`,
   apiCreateTripUser: () => `${APIRoot}/trips/create-user`,
   apiChangeMoney: () => `${APIRoot}/trips/change-money`,
+  calculate: (id) => `${APIRoot}/trips/calculate/?id=${id}`,
 };
