@@ -36,6 +36,10 @@ class Trip extends Component {
     const { name } = this.state;
 
     this.props.dispatch(enterTripUser(name, this.props.trip.data._id));
+
+    this.setState({
+      name: "",
+    });
   };
   render() {
     const { data, inProgress } = this.props.trip;
@@ -49,6 +53,7 @@ class Trip extends Component {
               type="text"
               placeholder="Enter name here..."
               onChange={this.handleChange}
+              value={this.state.name}
             ></input>
             <button onClick={this.handleSubmit}>Create</button>
           </div>

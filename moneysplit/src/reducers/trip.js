@@ -7,6 +7,8 @@ import {
   CREATE_TRIP_FAILED,
   CHANGE_MONEY_SUCCESS,
   CHANGE_MONEY_FAILED,
+  DELETE_USER_SUCCESS,
+  DELETE_USER_FAILED,
 } from "../actions/actionTypes";
 
 const initialTripState = {
@@ -23,6 +25,7 @@ export default function trip(state = initialTripState, action) {
         inProgress: true,
         error: null,
       };
+    case DELETE_USER_SUCCESS:
     case CHANGE_MONEY_SUCCESS:
     case GET_TRIP_SUCCESS:
       return {
@@ -31,6 +34,7 @@ export default function trip(state = initialTripState, action) {
         error: null,
         data: action.trip,
       };
+    case DELETE_USER_FAILED:
     case CHANGE_MONEY_FAILED:
     case ENTER_TRIP_USER_FAILED:
     case GET_TRIP_FAIL:

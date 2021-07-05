@@ -6,6 +6,8 @@ import {
   ENTER_TRIP_USER_FAILED,
   CHANGE_MONEY_SUCCESS,
   CHANGE_MONEY_FAILED,
+  DELETE_USER_SUCCESS,
+  DELETE_USER_FAILED,
 } from "./actionTypes";
 import { APIUrls } from "../helpers/getUrl";
 import { getFormBody } from "../helpers/utils";
@@ -54,6 +56,20 @@ export function changeMoneySuccess(trip) {
 export function changeMoneyFailed(error) {
   return {
     type: CHANGE_MONEY_FAILED,
+    error,
+  };
+}
+
+export function deleteUserSuccess(trip) {
+  return {
+    type: DELETE_USER_SUCCESS,
+    trip,
+  };
+}
+
+export function deleteUserFailed(error) {
+  return {
+    type: DELETE_USER_FAILED,
     error,
   };
 }
@@ -119,6 +135,27 @@ export function changeMoney(tripId, name, money) {
           dispatch(changeMoneySuccess(data.data.trip));
         } else {
           dispatch(changeMoneyFailed(data.message));
+        }
+      });
+  };
+}
+
+export function deleteUser(tripId, name) {
+  const url = APIUrls.deleteUserApi(tripId, name);
+
+  return (dispatch) => {
+    fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          dispatch(deleteUserSuccess(data.data.trip));
+        } else {
+          dispatch(deleteUserFailed(data.message));
         }
       });
   };

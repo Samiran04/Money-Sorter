@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { changeMoney } from "../actions/trip";
+import { changeMoney, deleteUser } from "../actions/trip";
 
 class User extends Component {
   constructor() {
@@ -26,15 +26,34 @@ class User extends Component {
     this.props.dispatch(
       changeMoney(this.props.trip.data._id, user.name, this.state.money)
     );
+
+    this.setState({
+      edit: false,
+    });
   };
 
   handleEdit = (e) => {
     e.preventDefault();
-    console.log("HERE");
     this.setState({
       edit: true,
     });
   };
+
+  handleCancle = (e) => {
+    e.preventDefault();
+    this.setState({
+      edit: false,
+    });
+  };
+
+  handleDelete = (e) => {
+    const { user } = this.props;
+
+    e.preventDefault();
+
+    this.props.dispatch(deleteUser(this.props.trip.data._id, user.name));
+  };
+
   render() {
     const { user } = this.props;
     const { edit } = this.state;
@@ -46,14 +65,16 @@ class User extends Component {
           {edit && (
             <input
               type="number"
-              value={`${user.money}`}
+              placeholder={`${user.money}`}
               onChange={this.handleChange}
             ></input>
           )}
         </span>
         <span className="actions">
-          <button onClick={this.handleEdit}>Edit</button>
-          <button onClick={this.handleSubmit}>Change</button>
+          {!edit && <button onClick={this.handleEdit}>Edit</button>}
+          {!edit && <button onClick={this.handleDelete}>Delete</button>}
+          {edit && <button onClick={this.handleCancle}>Cancle</button>}
+          {edit && <button onClick={this.handleSubmit}>Change</button>}
         </span>
       </div>
     );

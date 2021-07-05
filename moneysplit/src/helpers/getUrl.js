@@ -11,4 +11,6 @@ export const APIUrls = {
   apiCreateTripUser: () => `${APIRoot}/trips/create-user`,
   apiChangeMoney: () => `${APIRoot}/trips/change-money`,
   calculate: (id) => `${APIRoot}/trips/calculate/?id=${id}`,
+  deleteUserApi: (tripId, name) =>
+    `${APIRoot}/trips/delete-user/?tripId=${tripId}&name=${name}`,
 };

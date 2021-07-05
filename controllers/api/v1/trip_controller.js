@@ -230,3 +230,35 @@ module.exports.calcuate = async function (req, res) {
     });
   }
 };
+
+module.exports.deleteUser = async function (req, res) {
+  try {
+    let trip = await Trip.findById(req.query.tripId);
+
+    let users = trip.users,
+      i = 0;
+
+    for (let user of users) {
+      if (req.query.name === user.name) {
+        break;
+      }
+      i++;
+    }
+
+    trip.users.splice(i, 1);
+    trip.save();
+
+    return res.json(200, {
+      success: true,
+      data: {
+        trip: trip,
+      },
+    });
+  } catch (err) {
+    console.log(err);
+    return res.json(500, {
+      message: "Error in Delete User Code",
+      success: false,
+    });
+  }
+};
