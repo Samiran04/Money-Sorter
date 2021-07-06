@@ -250,10 +250,10 @@ nav .nav-links ul li:hover {
 /*Users List*/
 .list-outer {
   position: absolute;
-  top: 55%;
+  top: 42%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 28em;
+  height: auto;
   width: 25em;
   box-sizing: border-box;
   margin: 50px auto 0 auto;
@@ -344,4 +344,95 @@ nav .nav-links ul li:hover {
   color: white;
   font-weight: lighter;
   cursor: pointer;
+}
+
+.button {
+  border-radius: 4px;
+  background-color: #1eb7f4;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+/*back button*/
+.back-button {
+  border-radius: 4px;
+  background-color: #1eb7f4;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.back-button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.back-button span:after {
+  content: "\00AB";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: -20px;
+  transition: 0.5s;
+}
+
+.back-button:hover span {
+  padding-left: 25px;
+}
+
+.back-button:hover span:after {
+  opacity: 1;
+  left: 0;
+}
+
+.delete-trip {
+  background-color: red;
+  color: white;
+  width: 20px;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.delete-trip:hover {
+  font-weight: bold;
 }

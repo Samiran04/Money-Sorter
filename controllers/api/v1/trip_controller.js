@@ -1,5 +1,6 @@
 const Trip = require("../../../models/trip");
 const User = require("../../../models/user");
+const jwt = require("jsonwebtoken");
 
 module.exports.create = async function (req, res) {
   try {
@@ -135,9 +136,7 @@ module.exports.changeMoney = async function (req, res) {
 
     return res.json(200, {
       success: true,
-      data: {
-        trip: trip,
-      },
+      data: { trip: trip },
     });
   } catch (err) {
     console.log(err);
@@ -258,6 +257,32 @@ module.exports.deleteUser = async function (req, res) {
     console.log(err);
     return res.json(500, {
       message: "Error in Delete User Code",
+      success: false,
+    });
+  }
+};
+
+module.exports.deleteTrip = async function (req, res) {
+  try {
+    let trip = await Trip.findByIdAndDelete(req.query.tripId);
+
+    let user = await User.findOneAndUpdate(
+      { email: trip.email },
+      {
+        $pull: { tripsList: trip._id },
+      }
+    ).populate("tripsList");
+
+    return res.json(200, {
+      success: true,
+      data: {
+        token: jwt.sign(user.toJSON(), "Codeial", { expiresIn: "1000000" }),
+      },
+    });
+  } catch (err) {
+    console.log(err);
+    return res.json(500, {
+      message: "Error in Delete Trip Code",
       success: false,
     });
   }

@@ -13,4 +13,5 @@ export const APIUrls = {
   calculate: (id) => `${APIRoot}/trips/calculate/?id=${id}`,
   deleteUserApi: (tripId, name) =>
     `${APIRoot}/trips/delete-user/?tripId=${tripId}&name=${name}`,
+  deleteTripApi: (tripId) => `${APIRoot}/trips/delete-trip/?tripId=${tripId}`,
 };

@@ -44,28 +44,34 @@ class Trip extends Component {
   render() {
     const { data, inProgress } = this.props.trip;
     return (
-      <div className="list-outer">
-        {inProgress && <h1>Loading...</h1>}
-        <div className="list-title">
-          <h1>{data.name}</h1>
-          <div className="create-new">
-            <input
-              type="text"
-              placeholder="Enter name here..."
-              onChange={this.handleChange}
-              value={this.state.name}
-            ></input>
-            <button onClick={this.handleSubmit}>Create</button>
+      <div>
+        <div className="list-outer">
+          {inProgress && <h1>Loading...</h1>}
+          <div className="list-title">
+            <h1>{data.name}</h1>
+            <div className="create-new">
+              <input
+                type="text"
+                placeholder="Enter name here..."
+                onChange={this.handleChange}
+                value={this.state.name}
+              ></input>
+              <button onClick={this.handleSubmit}>Create</button>
+            </div>
+          </div>
+
+          <div className="items-list">
+            {data.users &&
+              data.users.length > 0 &&
+              data.users.map((user) => <User user={user} />)}
           </div>
         </div>
-
-        <div className="items-list">
-          {data.users &&
-            data.users.length > 0 &&
-            data.users.map((user) => <User user={user} />)}
-        </div>
         <div>
-          <Link to={`/solution/${this.props.trip.data._id}`}>Calculate</Link>
+          <Link to={`/solution/${this.props.trip.data._id}`}>
+            <button className="button">
+              <span>Calculate</span>
+            </button>
+          </Link>
         </div>
       </div>
     );

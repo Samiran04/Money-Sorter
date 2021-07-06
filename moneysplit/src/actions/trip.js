@@ -11,6 +11,8 @@ import {
 } from "./actionTypes";
 import { APIUrls } from "../helpers/getUrl";
 import { getFormBody } from "../helpers/utils";
+import jwt_decode from "jwt-decode";
+import { successTripsListFetch } from "./auth";
 
 export function tripProgress() {
   return {
@@ -154,6 +156,29 @@ export function deleteUser(tripId, name) {
       .then((data) => {
         if (data.success) {
           dispatch(deleteUserSuccess(data.data.trip));
+        } else {
+          dispatch(deleteUserFailed(data.message));
+        }
+      });
+  };
+}
+
+export function deleteTrip(tripId) {
+  const url = APIUrls.deleteTripApi(tripId);
+
+  return (dispatch) => {
+    fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          localStorage.setItem("token", data.data.token);
+          const user = jwt_decode(data.data.token);
+          dispatch(successTripsListFetch(user.tripsList));
         } else {
           dispatch(deleteUserFailed(data.message));
         }

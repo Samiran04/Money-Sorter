@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { APIUrls } from "../helpers/getUrl";
+import { Link } from "react-router-dom";
 
 class Solution extends Component {
   constructor() {
@@ -50,8 +51,20 @@ class Solution extends Component {
   }
   render() {
     const { data, isLoading, error } = this.state;
+    const {
+      match: { params },
+    } = this.props;
+
+    const { id } = params;
     return (
       <div>
+        {!isLoading && (
+          <Link to={`/trip/${id}`}>
+            <button className="back-button">
+              <span>Back</span>
+            </button>
+          </Link>
+        )}
         {isLoading && <h1>Loading...</h1>}
         {!isLoading && data && data.map((item) => <p>{item}</p>)}
         {!isLoading && error && <p>{error}</p>}
