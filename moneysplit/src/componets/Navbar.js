@@ -26,7 +26,7 @@ class Navbar extends Component {
               <ul>
                 <li>
                   {isLoggedIn ? (
-                    <Link to="">{user.name}</Link>
+                    <Link to={`/users/${user._id}`}>{user.name}</Link>
                   ) : (
                     <Link to="/sign-in">Log In</Link>
                   )}

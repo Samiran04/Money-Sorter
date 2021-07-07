@@ -7,6 +7,7 @@ import TripList from "./TripList";
 import Trip from "./Trip";
 import User from "./User";
 import Solution from "./Solution";
+import Settings from "./Settings";
 
 export {
   Navbar,
@@ -18,4 +19,5 @@ export {
   Trip,
   User,
   Solution,
+  Settings,
 };

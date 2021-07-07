@@ -348,7 +348,7 @@ nav .nav-links ul li:hover {
 
 .button {
   border-radius: 4px;
-  background-color: #1eb7f4;
+  background-color: #71b7e6;
   border: none;
   color: #ffffff;
   text-align: center;
@@ -388,7 +388,7 @@ nav .nav-links ul li:hover {
 /*back button*/
 .back-button {
   border-radius: 4px;
-  background-color: #1eb7f4;
+  background-color: #71b7e6;
   border: none;
   color: #ffffff;
   text-align: center;
@@ -435,4 +435,68 @@ nav .nav-links ul li:hover {
 
 .delete-trip:hover {
   font-weight: bold;
+}
+
+/*solution*/
+
+.solution {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.solution-item {
+  background-color: #138796;
+  color: white;
+  border-radius: 4px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.solution-item:hover {
+  font-weight: bold;
+}
+
+.common {
+  margin: 5px;
+  background-color: #138796;
+  border-radius: 4px;
+  width: fit-content;
+  height: fit-content;
+  color: white;
+  padding: 0px 4px 0px 4px;
+}
+
+.error {
+  margin: 5px;
+  background-color: red;
+  border-radius: 4px;
+  width: fit-content;
+  height: fit-content;
+  color: white;
+  padding: 0px 4px 0px 4px;
+}
+
+.settings {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  height: 200px;
+  width: 400px;
+  border-radius: 5px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+}
+
+.settings div {
+  font-weight: 500;
+}
+
+.values {
+  color: #777;
 }

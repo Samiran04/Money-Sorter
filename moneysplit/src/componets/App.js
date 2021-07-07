@@ -5,11 +5,43 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
-import { Navbar, Home, SignIn, SignUp, Trip, Solution } from "./index";
+import {
+  Navbar,
+  Home,
+  SignIn,
+  SignUp,
+  Trip,
+  Solution,
+  Settings,
+} from "./index";
 import { successLogIn } from "../actions/auth";
 import jwt_decode from "jwt-decode";
 import { connect } from "react-redux";
 import { getTripsList } from "../actions/auth";
+
+const PrivateRoute = (PrivateRouteProps) => {
+  const { isLoggedIn, component: Component, path } = PrivateRouteProps;
+
+  return (
+    <Route
+      path={path}
+      render={(props) => {
+        return isLoggedIn ? (
+          <Component {...props} />
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/sign-in",
+              state: {
+                from: props.location,
+              },
+            }}
+          />
+        );
+      }}
+    />
+  );
+};
 
 class App extends React.Component {
   componentDidMount() {
@@ -34,6 +66,7 @@ class App extends React.Component {
     }
   }
   render() {
+    const { isLoggedIn } = this.props.auth;
     return (
       <Router>
         <div className="App">
@@ -50,6 +83,11 @@ class App extends React.Component {
             <Route path="/sign-up" component={SignUp} />
             <Route path="/trip/:tripId" component={Trip} />
             <Route path="/solution/:id" component={Solution} />
+            <PrivateRoute
+              isLoggedIn={isLoggedIn}
+              component={Settings}
+              path="/users/:userId"
+            />
           </Switch>
         </div>
       </Router>

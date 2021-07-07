@@ -219,6 +219,7 @@ module.exports.calcuate = async function (req, res) {
       success: true,
       data: {
         solution: re,
+        common: common,
       },
     });
   } catch (err) {

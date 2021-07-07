@@ -10,6 +10,7 @@ class Solution extends Component {
       isLoading: true,
       data: [],
       error: null,
+      common: 0,
     };
   }
 
@@ -37,6 +38,7 @@ class Solution extends Component {
         error: null,
         isLoading: false,
         data: data.data.solution,
+        common: data.data.common,
       });
     } else {
       this.setState({
@@ -50,14 +52,14 @@ class Solution extends Component {
     this.handleCalculation();
   }
   render() {
-    const { data, isLoading, error } = this.state;
+    const { data, isLoading, error, common } = this.state;
     const {
       match: { params },
     } = this.props;
 
     const { id } = params;
     return (
-      <div>
+      <div className>
         {!isLoading && (
           <Link to={`/trip/${id}`}>
             <button className="back-button">
@@ -66,8 +68,17 @@ class Solution extends Component {
           </Link>
         )}
         {isLoading && <h1>Loading...</h1>}
-        {!isLoading && data && data.map((item) => <p>{item}</p>)}
-        {!isLoading && error && <p>{error}</p>}
+        <div className="solution">
+          {!isLoading &&
+            data &&
+            data.map((item) => <div className="solution-item">{item}</div>)}
+          {!isLoading && error && <div className="error">{error}</div>}
+          {!isLoading && !error && (
+            <div className="common">
+              <p>Each person should have spended {common}</p>
+            </div>
+          )}
+        </div>
       </div>
     );
   }

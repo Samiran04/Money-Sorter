@@ -69,3 +69,24 @@ module.exports.createSession = async function (req, res) {
     });
   }
 };
+
+module.exports.update = async function (req, res) {
+  try {
+    let user = await User.findByIdAndUpdate(req.body.userId, {
+      $set: { name: req.body.name, password: req.body.password },
+    });
+
+    return res.json(200, {
+      success: true,
+      data: {
+        token: jwt.sign(user.toJSON(), "Codeial", { expiresIn: "1000000" }),
+      },
+    });
+  } catch (err) {
+    console.log("Error in Update User", err);
+    return res.json(400, {
+      message: "Error in Update User",
+      success: false,
+    });
+  }
+};
