@@ -479,6 +479,8 @@ nav .nav-links ul li:hover {
   padding: 0px 4px 0px 4px;
 }
 
+/*Settings*/
+
 .settings {
   position: absolute;
   top: 45%;
@@ -491,6 +493,7 @@ nav .nav-links ul li:hover {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol";
+  box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
 }
 
 .settings div {
@@ -499,4 +502,45 @@ nav .nav-links ul li:hover {
 
 .values {
   color: #777;
+}
+
+.settings-inner {
+  display: inline-block;
+  height: 200px;
+  width: 200x;
+  position: relative;
+  top: 10px;
+  left: 10px;
+}
+
+.profile {
+  background: linear-gradient(to right, #ee5a6f, #f29263);
+  height: 200px;
+  width: 170px;
+  display: inline-block;
+  border-radius: 4px 0px 0px 4px;
+}
+
+.profile .image {
+  width: 100px;
+  position: relative;
+  left: 35px;
+  top: 30px;
+}
+
+.action {
+  position: absolute;
+  top: 110px;
+}
+
+.action button {
+  width: 70px;
+  height: 30px;
+  background: linear-gradient(to right, #ee5a6f, #f29263);
+  border: none;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+  margin-right: 5px;
 }
