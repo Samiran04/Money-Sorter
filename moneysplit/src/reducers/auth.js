@@ -10,6 +10,8 @@ import {
   CREATE_TRIP_SUCCESS,
   CREATE_TRIP_FAILED,
   FETCH_TRIP_LIST,
+  UPDATE_USER_SUCCESS,
+  UPDATE_USER_FAILED,
 } from "../actions/actionTypes";
 
 const inititalUserState = {
@@ -37,6 +39,13 @@ export default function auth(state = inititalUserState, action) {
         ...state,
         signup: true,
       };
+    case UPDATE_USER_SUCCESS:
+      return {
+        ...state,
+        error: null,
+        user: action.user,
+        tripsList: action.user.tripsList,
+      };
     case USER_SIGN_IN_SUCCESS:
       return {
         ...state,
@@ -47,6 +56,7 @@ export default function auth(state = inititalUserState, action) {
         user: action.user,
         tripsList: action.user.tripsList,
       };
+    case UPDATE_USER_FAILED:
     case USER_CREATE_FAIL:
     case USER_SIGN_IN_FAILED:
       return {

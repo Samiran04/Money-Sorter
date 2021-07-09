@@ -1,12 +1,24 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { updateUser } from "../actions/auth";
 
 class Settings extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+
     this.state = {
       flag: false,
+      name: "",
+      password: "",
     };
+  }
+
+  componentDidMount() {
+    const { user } = this.props.auth;
+    this.setState({
+      name: user.name,
+      password: user.password,
+    });
   }
 
   handleEdit = (e) => {
@@ -24,9 +36,30 @@ class Settings extends Component {
       flag: false,
     });
   };
+
+  handleName = (e) => {
+    this.setState({
+      name: e.target.value,
+    });
+  };
+
+  handlePassword = (e) => {
+    this.setState({
+      password: e.target.value,
+    });
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+
+    const { name, password } = this.state;
+    const { dispatch, auth } = this.props;
+
+    dispatch(updateUser(name, password, auth.user._id));
+  };
   render() {
     const { user } = this.props.auth;
-    const { flag } = this.state;
+    const { flag, name, password } = this.state;
     return (
       <div className="settings">
         <div className="profile">
@@ -40,13 +73,19 @@ class Settings extends Component {
           {!flag && <div>Email</div>}
           {!flag && <div className="values">{user.email}</div>}
           {flag && <div>Password</div>}
-          {flag && <input type="password" value={user.password}></input>}
+          {flag && (
+            <input
+              type="password"
+              value={password}
+              onChange={this.handlePassword}
+            ></input>
+          )}
           <div>Name</div>
           {!flag && <div className="values">{user.name}</div>}
-          {flag && <input value={user.name}></input>}
+          {flag && <input onChange={this.handleName} value={name}></input>}
           <div className="action">
             {!flag && <button onClick={this.handleEdit}>Edit</button>}
-            {flag && <button>Change</button>}
+            {flag && <button onClick={this.handleSubmit}>Change</button>}
             {flag && <button onClick={this.handleCancle}>Cancle</button>}
           </div>
         </div>

@@ -10,6 +10,8 @@ import {
   CREATE_TRIP_SUCCESS,
   CREATE_TRIP_FAILED,
   FETCH_TRIP_LIST,
+  UPDATE_USER_SUCCESS,
+  UPDATE_USER_FAILED,
 } from "./actionTypes";
 import { getFormBody } from "../helpers/utils";
 import { APIUrls } from "../helpers/getUrl";
@@ -85,6 +87,20 @@ export function successTripsListFetch(tripsList) {
   return {
     type: FETCH_TRIP_LIST,
     tripsList,
+  };
+}
+
+export function updateUserSuccess(user) {
+  return {
+    type: UPDATE_USER_SUCCESS,
+    user,
+  };
+}
+
+export function updateUserFailed(error) {
+  return {
+    type: UPDATE_USER_FAILED,
+    error,
   };
 }
 
@@ -178,6 +194,38 @@ export function getTripsList(email) {
       .then((data) => {
         if (data.success) {
           dispatch(successTripsListFetch(data.data.tripsList));
+        }
+      });
+  };
+}
+
+export function updateUser(name, password, userId) {
+  const url = APIUrls.updateUserApi();
+  return (dispatch) => {
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: getFormBody({ name, password, userId }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (!data.success) {
+          dispatch(updateUserFailed({ error: data.message }));
+        } else {
+          localStorage.removeItem("token");
+          localStorage.setItem("token", data.data.token);
+          const user = jwt_decode(data.data.token);
+          dispatch(
+            updateUserSuccess({
+              name: user.name,
+              _id: user._id,
+              email: user.email,
+              password: user.password,
+              tripsList: user.tripsList,
+            })
+          );
         }
       });
   };

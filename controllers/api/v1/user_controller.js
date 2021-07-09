@@ -72,9 +72,11 @@ module.exports.createSession = async function (req, res) {
 
 module.exports.update = async function (req, res) {
   try {
-    let user = await User.findByIdAndUpdate(req.body.userId, {
+    await User.findByIdAndUpdate(req.body.userId, {
       $set: { name: req.body.name, password: req.body.password },
     });
+
+    let user = await User.findById(req.body.userId).populate("tripsList");
 
     return res.json(200, {
       success: true,
