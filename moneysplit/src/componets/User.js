@@ -12,6 +12,14 @@ class User extends Component {
     };
   }
 
+  componentDidMount() {
+    const { user } = this.props;
+
+    this.setState({
+      money: user.money,
+    });
+  }
+
   handleChange = (e) => {
     this.setState({
       money: e.target.value,
@@ -56,7 +64,7 @@ class User extends Component {
 
   render() {
     const { user } = this.props;
-    const { edit } = this.state;
+    const { edit, money } = this.state;
     return (
       <div className="to-do-item">
         <span className="name">{user.name}</span>
@@ -65,7 +73,7 @@ class User extends Component {
           {edit && (
             <input
               type="number"
-              placeholder={`${user.money}`}
+              value={`${money}`}
               onChange={this.handleChange}
             ></input>
           )}

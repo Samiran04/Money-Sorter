@@ -45,7 +45,7 @@ body {
 
 .nav {
   display: flex;
-  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  background: linear-gradient(to right, #ee5a6f, #f29263);
   padding: 10px 20px;
   align-items: center;
   justify-content: space-between;
@@ -159,7 +159,7 @@ nav .nav-links ul li:hover {
   letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.3s ease;
-  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  background: linear-gradient(to right, #ee5a6f, #f29263);
 }
 
 /* LOGIN & SIGNUP COMPONENTS */
@@ -198,7 +198,7 @@ nav .nav-links ul li:hover {
 .field button {
   width: 100%;
   margin-top: 20px;
-  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  background: linear-gradient(to right, #ee5a6f, #f29263);
   border-radius: 2px;
   color: #fff;
   font-size: 20px;
@@ -217,7 +217,7 @@ nav .nav-links ul li:hover {
   box-sizing: border-box;
   border-radius: 4px;
   margin-top: 20px;
-  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  background: linear-gradient(to right, #ee5a6f, #f29263);
   width: 95%;
   position: relative;
   left: 2.5%;
@@ -310,7 +310,7 @@ nav .nav-links ul li:hover {
 .to-do-item {
   padding: 10px 0 10px 0;
   margin: 1px 0 1px 0;
-  border-top: 1px solid darken(#138796, 20%);
+  background: linear-gradient(to right, #ee5a6f, #f29263);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -348,7 +348,7 @@ nav .nav-links ul li:hover {
 
 .button {
   border-radius: 4px;
-  background-color: #71b7e6;
+  background: linear-gradient(to right, #ee5a6f, #f29263);
   border: none;
   color: #ffffff;
   text-align: center;
@@ -388,7 +388,7 @@ nav .nav-links ul li:hover {
 /*back button*/
 .back-button {
   border-radius: 4px;
-  background-color: #71b7e6;
+  background: linear-gradient(to right, #ee5a6f, #f29263);
   border: none;
   color: #ffffff;
   text-align: center;
@@ -448,7 +448,7 @@ nav .nav-links ul li:hover {
 }
 
 .solution-item {
-  background-color: #138796;
+  background: linear-gradient(to right, #ee5a6f, #f29263);
   color: white;
   border-radius: 4px;
   padding: 10px;
@@ -461,7 +461,7 @@ nav .nav-links ul li:hover {
 
 .common {
   margin: 5px;
-  background-color: #138796;
+  background: linear-gradient(to right, #ee5a6f, #f29263);
   border-radius: 4px;
   width: fit-content;
   height: fit-content;

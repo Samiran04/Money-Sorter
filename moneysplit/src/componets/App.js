@@ -81,8 +81,18 @@ class App extends React.Component {
             />
             <Route path="/sign-in" component={SignIn} />
             <Route path="/sign-up" component={SignUp} />
-            <Route path="/trip/:tripId" component={Trip} />
-            <Route path="/solution/:id" component={Solution} />
+            <Route
+              path="/trip/:tripId"
+              render={(props) => {
+                return <Trip {...props} />;
+              }}
+            />
+            <Route
+              path="/solution/:id"
+              render={(props) => {
+                return <Solution {...props} />;
+              }}
+            />
             <PrivateRoute
               isLoggedIn={isLoggedIn}
               component={Settings}

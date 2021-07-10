@@ -38,6 +38,7 @@ export default function auth(state = inititalUserState, action) {
       return {
         ...state,
         signup: true,
+        inProgress: false,
       };
     case UPDATE_USER_SUCCESS:
       return {

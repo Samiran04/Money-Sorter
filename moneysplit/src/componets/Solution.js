@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { APIUrls } from "../helpers/getUrl";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 
 class Solution extends Component {
   constructor() {
@@ -52,6 +53,16 @@ class Solution extends Component {
     this.handleCalculation();
   }
   render() {
+    const { isLoggedIn } = this.props.auth;
+
+    const { from } = this.props.location.state || {
+      from: { pathname: "/sign-in" },
+    };
+
+    if (!isLoggedIn) {
+      return <Redirect to={from} />;
+    }
+
     const { data, isLoading, error, common } = this.state;
     const {
       match: { params },
@@ -84,4 +95,10 @@ class Solution extends Component {
   }
 }
 
-export default Solution;
+function mapStateToProps(state) {
+  return {
+    auth: state.auth,
+  };
+}
+
+export default connect(mapStateToProps)(Solution);

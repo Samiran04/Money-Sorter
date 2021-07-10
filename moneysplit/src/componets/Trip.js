@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getTrip, enterTripUser } from "../actions/trip";
 import { User } from "./index";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 class Trip extends Component {
   constructor() {
@@ -42,6 +42,15 @@ class Trip extends Component {
     });
   };
   render() {
+    const { isLoggedIn } = this.props.auth;
+
+    const { from } = this.props.location.state || {
+      from: { pathname: "/sign-in" },
+    };
+
+    if (!isLoggedIn) {
+      return <Redirect to={from} />;
+    }
     const { data, inProgress } = this.props.trip;
     return (
       <div>
@@ -81,6 +90,7 @@ class Trip extends Component {
 function mapStateToProps(state) {
   return {
     trip: state.trip,
+    auth: state.auth,
   };
 }
 
