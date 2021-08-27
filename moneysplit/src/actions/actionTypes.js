@@ -1,6 +1,7 @@
 //user authentication
 export const USER_CREATE = "USER_CREATE";
 export const USER_CREATE_FAIL = "USER_CREATE_FAIL";
+export const USER_CREATE_EXTRA = "USER_CREATE_EXTRA";
 export const USER_CREATE_SUCCESS = "USER_CREATE_SUCCESS";
 export const SIGN_OUT = "SIGN_OUT";
 export const REMOVE_ERROR_MESSAGE = "REMOVE_ERROR_MESSAGE";

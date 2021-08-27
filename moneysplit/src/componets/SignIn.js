@@ -1,5 +1,9 @@
 import React, { Component } from "react";
-import { authenticateUser, removeErrorMessage } from "../actions/auth";
+import {
+  authenticateUser,
+  removeErrorMessage,
+  userCreateExtra,
+} from "../actions/auth";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
@@ -15,6 +19,12 @@ class Login extends Component {
 
   componentWillUnmount() {
     this.props.dispatch(removeErrorMessage());
+  }
+
+  componentDidMount() {
+    const { dispatch } = this.props;
+
+    dispatch(userCreateExtra());
   }
 
   handleEmail = (e) => {

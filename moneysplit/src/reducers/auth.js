@@ -12,6 +12,7 @@ import {
   FETCH_TRIP_LIST,
   UPDATE_USER_SUCCESS,
   UPDATE_USER_FAILED,
+  USER_CREATE_EXTRA,
 } from "../actions/actionTypes";
 
 const inititalUserState = {
@@ -39,6 +40,14 @@ export default function auth(state = inititalUserState, action) {
         ...state,
         signup: true,
         inProgress: false,
+      };
+    case USER_CREATE_EXTRA:
+      return {
+        ...state,
+        error: null,
+        isLoggedIn: false,
+        inProgress: false,
+        signup: false,
       };
     case UPDATE_USER_SUCCESS:
       return {

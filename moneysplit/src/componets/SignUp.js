@@ -35,9 +35,17 @@ class SignUp extends Component {
     dispatch(createUser(name, email, password, confirm_password));
   };
   render() {
-    const { inProgress, isLoggedIn, error } = this.props.auth;
+    const { inProgress, isLoggedIn, error, signup } = this.props.auth;
 
     const { from } = this.props.location.state || { from: { pathname: "/" } };
+
+    const { from2 } = this.props.location.state || {
+      from: { pathname: "/sign-in" },
+    };
+
+    if (signup) {
+      return <Redirect to={from2} />;
+    }
 
     if (isLoggedIn) {
       return <Redirect to={from} />;

@@ -12,6 +12,7 @@ import {
   FETCH_TRIP_LIST,
   UPDATE_USER_SUCCESS,
   UPDATE_USER_FAILED,
+  USER_CREATE_EXTRA,
 } from "./actionTypes";
 import { getFormBody } from "../helpers/utils";
 import { APIUrls } from "../helpers/getUrl";
@@ -101,6 +102,12 @@ export function updateUserFailed(error) {
   return {
     type: UPDATE_USER_FAILED,
     error,
+  };
+}
+
+export function userCreateExtra() {
+  return {
+    type: USER_CREATE_EXTRA,
   };
 }
 
