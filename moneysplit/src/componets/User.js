@@ -81,7 +81,7 @@ class User extends Component {
         <span className="actions">
           {!edit && <button onClick={this.handleEdit}>Edit</button>}
           {!edit && <button onClick={this.handleDelete}>Delete</button>}
-          {edit && <button onClick={this.handleCancle}>Cancle</button>}
+          {edit && <button onClick={this.handleCancle}>Cancel</button>}
           {edit && <button onClick={this.handleSubmit}>Change</button>}
         </span>
       </div>

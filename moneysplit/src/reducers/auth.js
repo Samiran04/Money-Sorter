@@ -45,7 +45,6 @@ export default function auth(state = inititalUserState, action) {
       return {
         ...state,
         error: null,
-        isLoggedIn: false,
         inProgress: false,
         signup: false,
       };

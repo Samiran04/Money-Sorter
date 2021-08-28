@@ -101,7 +101,7 @@ nav .nav-links ul li {
   padding: 0 4px;
 }
 nav .nav-links ul li a {
-  text-decoration: none;
+  text-decoration: none !important;
   color: #fff;
 }
 nav .nav-links ul li a:hover {
@@ -543,4 +543,12 @@ nav .nav-links ul li:hover {
   cursor: pointer;
   box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
   margin-right: 5px;
+}
+
+/*file upload*/
+
+.File {
+  position: absolute;
+  top: 35px;
+  left: -1px;
 }

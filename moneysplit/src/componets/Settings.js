@@ -10,6 +10,7 @@ class Settings extends Component {
       flag: false,
       name: "",
       password: "",
+      selectedFile: null,
     };
   }
 
@@ -49,11 +50,23 @@ class Settings extends Component {
     });
   };
 
+  handleFile = (e) => {
+    this.setState({ selectedFile: e.target.files[0] });
+  };
+
   handleSubmit = (e) => {
     e.preventDefault();
 
     const { name, password } = this.state;
     const { dispatch, auth } = this.props;
+
+    const formData = new FormData();
+
+    formData.append(
+      "myFile",
+      this.state.selectedFile,
+      this.state.selectedFile.name
+    );
 
     dispatch(updateUser(name, password, auth.user._id));
   };
@@ -86,7 +99,10 @@ class Settings extends Component {
           <div className="action">
             {!flag && <button onClick={this.handleEdit}>Edit</button>}
             {flag && <button onClick={this.handleSubmit}>Change</button>}
-            {flag && <button onClick={this.handleCancle}>Cancle</button>}
+            {flag && (
+              <input className="File" type="file" onChange={this.handleFile} />
+            )}
+            {flag && <button onClick={this.handleCancle}>Cancel</button>}
           </div>
         </div>
       </div>
