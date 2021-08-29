@@ -57,18 +57,10 @@ class Settings extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    const { name, password } = this.state;
+    const { name, password, selectedFile } = this.state;
     const { dispatch, auth } = this.props;
 
-    const formData = new FormData();
-
-    formData.append(
-      "myFile",
-      this.state.selectedFile,
-      this.state.selectedFile.name
-    );
-
-    dispatch(updateUser(name, password, auth.user._id));
+    dispatch(updateUser(name, password, auth.user._id, selectedFile));
   };
   render() {
     const { user } = this.props.auth;

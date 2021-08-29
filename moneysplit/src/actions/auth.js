@@ -206,7 +206,7 @@ export function getTripsList(email) {
   };
 }
 
-export function updateUser(name, password, userId) {
+export function updateUser(name, password, userId, selectedFile) {
   const url = APIUrls.updateUserApi();
   return (dispatch) => {
     fetch(url, {
@@ -214,7 +214,7 @@ export function updateUser(name, password, userId) {
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
-      body: getFormBody({ name, password, userId }),
+      body: getFormBody({ name, password, userId, selectedFile }),
     })
       .then((response) => response.json())
       .then((data) => {
