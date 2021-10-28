@@ -156,6 +156,16 @@ module.exports.calcuate = async function (req, res) {
       n = trip.users.length,
       temp = trip.users;
 
+    if (n === 0) {
+      return res.json(200, {
+        success: true,
+        data: {
+          solution: [],
+          common: -1,
+        },
+      });
+    }
+
     for (var user of trip.users) {
       total += user.money;
     }

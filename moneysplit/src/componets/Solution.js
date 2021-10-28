@@ -70,7 +70,7 @@ class Solution extends Component {
 
     const { id } = params;
     return (
-      <div className>
+      <div>
         {!isLoading && (
           <Link to={`/trip/${id}`}>
             <button className="back-button">
@@ -84,9 +84,14 @@ class Solution extends Component {
             data &&
             data.map((item) => <div className="solution-item">{item}</div>)}
           {!isLoading && error && <div className="error">{error}</div>}
-          {!isLoading && !error && (
+          {!isLoading && !error && common != -1 && (
             <div className="common">
               <p>Each person should have spended {common}</p>
+            </div>
+          )}
+          {!isLoading && !error && common == -1 && (
+            <div className="common">
+              <h1>Please Enter the Users</h1>
             </div>
           )}
         </div>
