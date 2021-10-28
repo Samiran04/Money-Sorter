@@ -9,6 +9,7 @@ class User extends Component {
     this.state = {
       money: 0,
       edit: false,
+      flag: false,
     };
   }
 
@@ -21,9 +22,16 @@ class User extends Component {
   }
 
   handleChange = (e) => {
-    this.setState({
-      money: e.target.value,
-    });
+    if (e.target.value >= 0) {
+      this.setState({
+        money: e.target.value,
+        flag: false,
+      });
+    } else {
+      this.setState({
+        flag: true,
+      });
+    }
   };
 
   handleSubmit = (e) => {
@@ -51,6 +59,7 @@ class User extends Component {
     e.preventDefault();
     this.setState({
       edit: false,
+      flag: false,
     });
   };
 
@@ -64,26 +73,36 @@ class User extends Component {
 
   render() {
     const { user } = this.props;
-    const { edit, money } = this.state;
+    const { edit, money, flag } = this.state;
     return (
-      <div className="to-do-item">
-        <span className="name">{user.name}</span>
-        <span className="name">
-          {!edit && user.money}
-          {edit && (
-            <input
-              type="number"
-              value={`${money}`}
-              onChange={this.handleChange}
-            ></input>
+      <div>
+        <div className="to-do-item">
+          <span className="name">{user.name}</span>
+          <span className="name">
+            {!edit && user.money}
+            {edit && (
+              <input
+                type="number"
+                value={`${money}`}
+                onChange={this.handleChange}
+              ></input>
+            )}
+          </span>
+          <span className="actions">
+            {!edit && <button onClick={this.handleEdit}>Edit</button>}
+            {!edit && <button onClick={this.handleDelete}>Delete</button>}
+            {edit && <button onClick={this.handleCancle}>Cancel</button>}
+            {edit && <button onClick={this.handleSubmit}>Change</button>}
+          </span>
+        </div>
+
+        <div>
+          {flag && (
+            <p className="negative-warning">
+              Only zero to positive numbers are allowed
+            </p>
           )}
-        </span>
-        <span className="actions">
-          {!edit && <button onClick={this.handleEdit}>Edit</button>}
-          {!edit && <button onClick={this.handleDelete}>Delete</button>}
-          {edit && <button onClick={this.handleCancle}>Cancel</button>}
-          {edit && <button onClick={this.handleSubmit}>Change</button>}
-        </span>
+        </div>
       </div>
     );
   }

@@ -1,5 +1,6 @@
 const User = require("../../../models/user");
 const jwt = require("jsonwebtoken");
+const env = require("../../../config/environment");
 module.exports.create = async function (req, res) {
   try {
     if (req.body.confirm_password !== req.body.password) {
@@ -56,7 +57,9 @@ module.exports.createSession = async function (req, res) {
       return res.json(200, {
         message: "You are loged in and take care of your token now",
         data: {
-          token: jwt.sign(user.toJSON(), "Codeial", { expiresIn: "1000000" }),
+          token: jwt.sign(user.toJSON(), env.jwt_secret_key, {
+            expiresIn: "1000000",
+          }),
         },
         success: true,
       });
@@ -81,7 +84,9 @@ module.exports.update = async function (req, res) {
     return res.json(200, {
       success: true,
       data: {
-        token: jwt.sign(user.toJSON(), "Codeial", { expiresIn: "1000000" }),
+        token: jwt.sign(user.toJSON(), env.jwt_secret_key, {
+          expiresIn: "1000000",
+        }),
       },
     });
   } catch (err) {

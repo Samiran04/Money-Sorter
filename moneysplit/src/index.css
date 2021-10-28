@@ -336,6 +336,10 @@ nav .nav-links ul li:hover {
   margin-right: 10px;
 }
 
+.negative-warning {
+  color: white;
+}
+
 .actions button {
   padding: 7px;
   border-radius: 2px;
