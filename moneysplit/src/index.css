@@ -486,6 +486,7 @@ nav .nav-links ul li:hover {
 /*Settings*/
 
 .settings {
+  font-size: 25px;
   position: absolute;
   top: 45%;
   left: 50%;
@@ -517,6 +518,11 @@ nav .nav-links ul li:hover {
   left: 10px;
 }
 
+.settings-inner input {
+  height: 20px;
+  font-size: 15px;
+}
+
 .profile {
   background: linear-gradient(to right, #ee5a6f, #f29263);
   height: 200px;
@@ -538,8 +544,8 @@ nav .nav-links ul li:hover {
 }
 
 .action button {
-  width: 70px;
-  height: 30px;
+  width: 90px;
+  height: 40px;
   background: linear-gradient(to right, #ee5a6f, #f29263);
   border: none;
   border-radius: 3px;
@@ -547,6 +553,25 @@ nav .nav-links ul li:hover {
   cursor: pointer;
   box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
   margin-right: 5px;
+  font-size: 20px;
+}
+
+.edit {
+  position: absolute;
+  top: 30px;
+  left: 150px;
+}
+
+.change {
+  position: absolute;
+  top: 30px;
+  left: 100px;
+}
+
+.cancel {
+  position: absolute;
+  top: 30px;
+  left: 200px;
 }
 
 /*file upload*/

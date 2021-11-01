@@ -67,13 +67,6 @@ class Settings extends Component {
     const { flag, name, password } = this.state;
     return (
       <div className="settings">
-        <div className="profile">
-          <img
-            src="https://image.flaticon.com/icons/png/512/236/236832.png"
-            alt="Profile-Image"
-            className="image"
-          ></img>
-        </div>
         <div className="settings-inner">
           {!flag && <div>Email</div>}
           {!flag && <div className="values">{user.email}</div>}
@@ -89,12 +82,21 @@ class Settings extends Component {
           {!flag && <div className="values">{user.name}</div>}
           {flag && <input onChange={this.handleName} value={name}></input>}
           <div className="action">
-            {!flag && <button onClick={this.handleEdit}>Edit</button>}
-            {flag && <button onClick={this.handleSubmit}>Change</button>}
-            {flag && (
-              <input className="File" type="file" onChange={this.handleFile} />
+            {!flag && (
+              <button className="edit" onClick={this.handleEdit}>
+                Edit
+              </button>
             )}
-            {flag && <button onClick={this.handleCancle}>Cancel</button>}
+            {flag && (
+              <button className="change" onClick={this.handleSubmit}>
+                Change
+              </button>
+            )}
+            {flag && (
+              <button className="cancel" onClick={this.handleCancle}>
+                Cancel
+              </button>
+            )}
           </div>
         </div>
       </div>
